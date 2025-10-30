@@ -1,0 +1,12 @@
+public class deck {
+    private final gameofcards[] deck = new gameofcards[52];{
+        int i = 1;
+        for (int face = 1; face <= 4; face++) {
+            for (int suit = 1; suit <= 13; suit++) {
+                deck[i] = new gameofcards(face, suit);
+            }}
+
+        }
+    }
+
+
