@@ -1,0 +1,27 @@
+public class deck {
+
+    private card[] deck;
+
+
+    public deck(){
+        deck = new card[52];}
+
+    public void populateDeck() {
+        int index = 0;
+        for (int face = 1; face <=4; face++) {
+            for (int suit = 1; suit <=13; suit++){
+                deck[index] = new card(face, suit);
+                index++;
+            }}
+        
+        public card selectCard(int target) {
+            return deck[target];
+        }
+        
+        
+
+
+
+
+        }
+    }
