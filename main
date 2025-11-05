@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        deck firstdeck = new deck();
+        firstdeck.populateDeck();
+        firstdeck.showDeck();
+        System.out.println(firstdeck.showDeck());
+        System.out.println("Would you like to shuffle the deck?");
+        String stropinion = scan.nextLine();
+        if(stropinion.equals("yes")) {
+            firstdeck.shuffleDeck();
+            System.out.println(firstdeck.showDeck());
+
+    }
+}}
