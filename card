@@ -1,26 +1,27 @@
 public class card {
+    // Integers and arrays for use in our program.
     private final int face;
     private final int suit;
     private final String[] suits = {null, "Spades", "Hearts", "Clubs", "Diamonds"};
     private final String[] faces = {null, "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
+    // Constructor for the card class.
     public card(int face, int suit) {
         this.face = face;
         this.suit = suit;
     }
 
+    //Method that returns the index of face.
     public int getFace(){
         return face;
     }
 
+    //Method that returns the index of suit.
     public int getSuit(){
         return suit;
     }
 
+    //toString that uses the index of both faces and suits to look for the contents of them in the array.
     public String toString() {return faces[face] + " of " + suits[suit];}
+
 }
-
-
-
-
-
