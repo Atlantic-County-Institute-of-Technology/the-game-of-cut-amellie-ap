@@ -1,0 +1,71 @@
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        deck firstdeck = new deck();
+        Random random = new Random();
+        int computerChoice;
+        int userfacevalue = 0;
+        int computerfacevalue = 0;
+
+        int usersuitvalue = 0;
+        int computersuitvalue = 0;
+
+        int computerWin = 0;
+        int userWin = 0;
+        while (computerWin < 3 && userWin < 3)
+            {if (userWin > 0 || computerWin > 0) {firstdeck.clearDeck();}
+
+        firstdeck.populateDeck();
+        firstdeck.showDeck();
+
+        deck opposingdeck = new deck();
+        opposingdeck.populateDeck();
+
+        System.out.println("Where would you like to cut? Select a number from 1-51");
+        int userChoice = scan.nextInt();
+        System.out.println("Your card: " + firstdeck.selectCard(userChoice));
+        if (userChoice < 51) {
+            computerChoice = random.nextInt(userChoice , 51);
+        }
+        else {
+            computerChoice = 51;
+        }
+        System.out.println("Computer's Choice: " + firstdeck.selectCard(computerChoice + 1));
+
+
+        userfacevalue = firstdeck.selectCard( userChoice - 1).getFace();
+        computerfacevalue = firstdeck.selectCard(computerChoice).getFace();
+
+        if (computerfacevalue > userfacevalue) {
+            computerWin++;
+            System.out.println("The Computer wins! \n");
+        }
+        else if (userfacevalue > computerfacevalue) {
+            userWin++;
+            System.out.println("You win! \n");
+            }
+
+        else {
+            usersuitvalue = firstdeck.selectCard( userChoice - 1).getSuit();
+            computersuitvalue = firstdeck.selectCard(computerChoice).getSuit();
+            if (usersuitvalue > computersuitvalue) {
+                computerWin++;
+                System.out.println("The Computer wins!");
+            }
+            else if (computersuitvalue > userfacevalue) {
+                userWin++;
+                System.out.println("You win!");
+            }}
+
+                System.out.println("Your unshuffled deck: \n");
+                System.out.println(firstdeck.showDeck() + "\n") ;
+
+                System.out.println("Your shuffled Deck... \n");
+                firstdeck.shuffleDeck();
+                System.out.println(firstdeck.showDeck());
+
+            }}}
