@@ -1,0 +1,58 @@
+import java.util.Random;
+
+public class deck {
+
+
+    private card[] deck;
+    Random random = new Random();
+
+    public deck(){
+        deck = new card[52];}
+
+
+    public void populateDeck() {
+        int index = 0;
+        for (int suit = 1; suit <= 4; suit++) {
+            for (int face = 1; face <= 13; face++) {
+                deck[index] = new card(face, suit);
+                index++;
+            }
+        }
+    }
+
+    public void clearDeck() {
+        for (int i = 0; i < deck.length; i++) {
+            deck[i] = null;
+        }
+    }
+
+    public void shuffleDeck() {
+        for (int i = 0; i < deck.length; i++) {
+            // for a card at i
+            // choose a valid position in the deck at random
+            // swap both cards between i and random pos
+            card temp = deck[i];
+            int a = random.nextInt(52);
+            deck[i] = deck[a];
+            deck[a] = temp;
+        }}
+
+
+    public card selectCard(int target)
+    {
+        return deck[target - 1];
+    }
+
+
+
+    public String showDeck() {
+        String result = "";
+        for (int i=0; i < deck.length; i++) {
+            result += deck[i].toString() + "\n";
+        }
+        return result;
+
+
+
+
+    }}
