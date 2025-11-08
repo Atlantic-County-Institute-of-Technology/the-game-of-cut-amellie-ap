@@ -1,0 +1,84 @@
+//Game of Cut
+//Arizmendi A
+// 11/8/25
+import java.util.Scanner;
+import java.util.Random;
+
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        deck firstdeck = new deck();
+        Random random = new Random();
+
+
+        // Int values for comparisons
+        int computerChoice;
+        int userfacevalue = 0;
+        int computerfacevalue = 0;
+
+        int usersuitvalue = 0;
+        int computersuitvalue = 0;
+
+        int computerWin = 0;
+        int userWin = 0;
+
+        //While loop that keeps the game running and clears the deck after the first round.
+        while (computerWin < 3 && userWin < 3)
+            {if (userWin > 0 || computerWin > 0) {firstdeck.clearDeck();}
+
+        //Methods for the first deck object which populates the user deck and the player deck.
+        firstdeck.populateDeck();
+        firstdeck.showDeck();
+        deck opposingdeck = new deck();
+        opposingdeck.populateDeck();
+
+        //First stores the integer in which the user would like to cut the card then fetches its value from the deck.
+        // Also handles cutting and the computer choice in the case that the user chooses the int 51.
+        System.out.println("Where would you like to cut? Select a number from 1-51");
+        int userChoice = scan.nextInt();
+        System.out.println("Your card: " + firstdeck.selectCard(userChoice));
+        if (userChoice < 51) {
+            computerChoice = random.nextInt(userChoice , 51);
+        }
+        else {
+            computerChoice = 51;
+        }
+        System.out.println("Computer's Choice: " + firstdeck.selectCard(computerChoice + 1));
+
+
+        // Handles the comparison using the indexes of the faces array accounting the user and computer's choice.
+        userfacevalue = firstdeck.selectCard( userChoice - 1).getFace();
+        computerfacevalue = firstdeck.selectCard(computerChoice).getFace();
+
+        if (computerfacevalue > userfacevalue) {
+            computerWin++;
+            System.out.println("The Computer wins! \n");
+        }
+        else if (userfacevalue > computerfacevalue) {
+            userWin++;
+            System.out.println("You win! \n");
+            }
+
+        // If it initially ends on a tie it will move on to compare the suits using the indexes of the suit array.
+        else {
+            usersuitvalue = firstdeck.selectCard( userChoice - 1).getSuit();
+            computersuitvalue = firstdeck.selectCard(computerChoice).getSuit();
+            if (usersuitvalue > computersuitvalue) {
+                computerWin++;
+                System.out.println("The Computer wins!");
+            }
+            else if (computersuitvalue > userfacevalue) {
+                userWin++;
+                System.out.println("You win!");
+            }}
+
+        //Prints out the unshuffled and shuffled deck.
+                System.out.println("Your unshuffled deck: \n");
+                System.out.println(firstdeck.showDeck() + "\n") ;
+
+                System.out.println("Your shuffled Deck... \n");
+                firstdeck.shuffleDeck();
+                System.out.println(firstdeck.showDeck());
+
+            }}}
